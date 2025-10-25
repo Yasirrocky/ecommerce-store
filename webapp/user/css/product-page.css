@@ -1,0 +1,119 @@
+/* Product Page Specific Styles */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image-container img {
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.1);
+}
+
+.product-actions {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.filter-group {
+    transition: height 0.3s ease;
+}
+
+.filter-toggle {
+    transition: transform 0.3s ease;
+}
+
+.filter-toggle.active {
+    transform: rotate(180deg);
+}
+
+/* Loading animation */
+.loading-skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: rgba(200, 200, 200, 0.1);
+    }
+    100% {
+        background-color: rgba(200, 200, 200, 0.3);
+    }
+}
+
+/* Grid/List view transitions */
+.products-grid, .products-list {
+    transition: opacity 0.3s ease;
+}
+
+/* Price range slider */
+.price-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 2px;
+    background: #e5e7eb;
+    outline: none;
+    margin: 15px 0;
+}
+
+.price-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.price-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Filter pills */
+.filter-pill {
+    transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+    background-color: #1f2937;
+}
+
+/* Sort dropdown animation */
+.sort-dropdown {
+    transform-origin: top;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Custom scrollbar for filters */
+.filters-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.filters-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

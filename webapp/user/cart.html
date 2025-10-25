@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - StyleHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="navigation"></div>
+
+    <!-- Page Header -->
+    <div class="bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-800">Shopping Cart</h1>
+            <p class="text-gray-600 mt-2">Review your items before checkout</p>
+        </div>
+    </div>
+
+    <!-- Cart Content -->
+    <div class="container-responsive py-6 sm:py-8">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-6 xl:gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">Cart Items</h2>
+                    <div id="cartItems" class="space-y-3 sm:space-y-4">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="mt-6 lg:mt-0">
+                <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">Order Summary</h2>
+                    
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="flex justify-between text-sm sm:text-base">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span id="subtotal" class="font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm sm:text-base">
+                            <span class="text-gray-600">Shipping</span>
+                            <span id="shipping" class="font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm sm:text-base">
+                            <span class="text-gray-600">Tax</span>
+                            <span id="tax" class="font-semibold">$0.00</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3 sm:pt-4">
+                            <div class="flex justify-between">
+                                <span class="text-base sm:text-lg font-semibold text-gray-800">Total</span>
+                                <span id="total" class="text-base sm:text-lg font-bold text-blue-600">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="checkoutBtn" class="w-full mt-4 sm:mt-6 bg-blue-600 text-white py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                        Proceed to Checkout
+                    </button>
+                    
+                    <a href="product.html" class="block w-full mt-3 sm:mt-4 bg-gray-200 text-gray-800 text-center py-3 px-4 sm:px-6 rounded-lg hover:bg-gray-300 transition duration-300 text-sm sm:text-base">
+                        Continue Shopping
+                    </a>
+                </div>
+                
+                <!-- Security Badge -->
+                <div class="mt-4 sm:mt-6 bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-green-600 mr-2 sm:mr-3 text-sm"></i>
+                        <div>
+                            <h3 class="text-xs sm:text-sm font-semibold text-green-800">Secure Checkout</h3>
+                            <p class="text-xs text-green-600">Your payment information is safe and encrypted</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site-settings.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart-page.js"></script>
+</body>
+</html>

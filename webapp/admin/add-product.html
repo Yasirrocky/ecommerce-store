@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - StyleHub Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../user/css/style.css">
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="../user/index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">StyleHub Admin</a>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="dashboard.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200">Dashboard</a>
+                        <a href="products.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200">Products</a>
+                        <a href="categories.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200">Categories</a>
+                        <a href="orders.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200">Orders</a>
+                        <a href="settings.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200">Settings</a>
+                        <div class="relative group">
+                            <button class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-lg text-sm font-medium flex items-center transition-all duration-200">
+                                <i class="fas fa-user-circle mr-2 text-lg"></i>
+                                <span id="adminName">Admin</span>
+                                <i class="fas fa-chevron-down ml-1"></i>
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                                <div class="py-2">
+                                    <a href="../user/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150">
+                                        <i class="fas fa-store mr-2"></i>View Store
+                                    </a>
+                                    <a href="#" id="logoutBtn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+                <a href="dashboard.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">Dashboard</a>
+                <a href="products.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">Products</a>
+                <a href="categories.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">Categories</a>
+                <a href="orders.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">Orders</a>
+                <a href="settings.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">Settings</a>
+                <a href="../user/index.html" class="text-gray-700 hover:bg-blue-50 hover:text-blue-600 block px-3 py-2 rounded-lg text-base font-medium">View Store</a>
+                <a href="#" id="mobileLogoutBtn" class="text-gray-700 hover:bg-red-50 hover:text-red-600 block px-3 py-2 rounded-lg text-base font-medium">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-4">
+                        <i class="fas fa-plus-circle text-white text-3xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-bold text-white">Add Product</h1>
+                        <p class="text-blue-100 mt-2">Create a new product for your store</p>
+                    </div>
+                </div>
+                <a href="products.html" class="bg-white text-blue-600 px-6 py-3 rounded-xl hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Products
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Form -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <form id="addProductForm" class="space-y-8">
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <!-- Basic Information -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6">Basic Information</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="productName" class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
+                            <input type="text" id="productName" name="name" required
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="Enter product name">
+                        </div>
+                        
+                        <div>
+                            <label for="productPrice" class="block text-sm font-medium text-gray-700 mb-2">Price *</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="text-gray-500 sm:text-sm">$</span>
+                                </div>
+                                <input type="number" id="productPrice" name="price" step="0.01" min="0" required
+                                       class="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                       placeholder="0.00">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <label for="productDescription" class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                        <textarea id="productDescription" name="description" rows="4" required
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                  placeholder="Enter product description"></textarea>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <label for="productCategory" class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                        <select id="productCategory" name="category_id" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Select a category</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Product Image -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6">Product Image</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-center w-full">
+                            <label for="productImage" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-4"></i>
+                                    <p class="mb-2 text-sm text-gray-500">
+                                        <span class="font-semibold">Click to upload</span> or drag and drop
+                                    </p>
+                                    <p class="text-xs text-gray-500">PNG, JPG or GIF (MAX. 10MB)</p>
+                                </div>
+                                <input id="productImage" type="file" class="hidden" accept="image/*">
+                            </label>
+                        </div>
+                        
+                        <div id="imagePreview" class="hidden">
+                            <img id="previewImg" src="" alt="Preview" class="w-32 h-32 object-cover rounded-lg">
+                            <button type="button" id="removeImage" class="mt-2 text-red-600 hover:text-red-800 text-sm">
+                                Remove Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Information -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-6">Additional Information</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="productSizes" class="block text-sm font-medium text-gray-700 mb-2">Available Sizes</label>
+                            <input type="text" id="productSizes" name="sizes"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="XS, S, M, L, XL, XXL">
+                            <p class="text-xs text-gray-500 mt-1">Separate sizes with commas</p>
+                        </div>
+                        
+                        <div>
+                            <label for="productColors" class="block text-sm font-medium text-gray-700 mb-2">Available Colors</label>
+                            <input type="text" id="productColors" name="colors"
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="Red, Blue, Green, Black">
+                            <p class="text-xs text-gray-500 mt-1">Separate colors with commas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <label for="productTags" class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                        <input type="text" id="productTags" name="tags"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="summer, casual, trendy">
+                        <p class="text-xs text-gray-500 mt-1">Separate tags with commas</p>
+                    </div>
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4">
+                    <a href="products.html" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300">
+                        Cancel
+                    </a>
+                    <button type="submit" id="saveProductBtn"
+                            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                        <span id="saveBtnText">Save Product</span>
+                        <div id="saveLoading" class="hidden">
+                            <div class="loading"></div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-4">StyleHub Admin</h3>
+                <p class="text-gray-400">Manage your online store with ease</p>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 StyleHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/brand.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/add-product.js"></script>
+</body>
+</html>

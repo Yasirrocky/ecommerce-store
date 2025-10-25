@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Dashboard - StyleHub</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="../user/index.html" class="text-xl font-bold">StyleHub</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="login.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-h-screen p-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Admin Portal</h1>
+                <p class="text-gray-600">Manage your StyleHub store</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="dashboard.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-blue-100 text-blue-600 rounded-lg">
+                            <i class="fas fa-tachometer-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Dashboard</h3>
+                            <p class="text-gray-600">View analytics and statistics</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-green-100 text-green-600 rounded-lg">
+                            <i class="fas fa-box text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Products</h3>
+                            <p class="text-gray-600">Manage your products</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="categories.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-purple-100 text-purple-600 rounded-lg">
+                            <i class="fas fa-tags text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Categories</h3>
+                            <p class="text-gray-600">Manage product categories</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="orders.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-yellow-100 text-yellow-600 rounded-lg">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Orders</h3>
+                            <p class="text-gray-600">View and manage orders</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="users.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-red-100 text-red-600 rounded-lg">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Users</h3>
+                            <p class="text-gray-600">Manage user accounts</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="settings.html" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-gray-100 text-gray-600 rounded-lg">
+                            <i class="fas fa-cog text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">Settings</h3>
+                            <p class="text-gray-600">Configure store settings</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/brand.js"></script>
+    <script src="js/admin-auth.js"></script>
+
+</body>
+</html>

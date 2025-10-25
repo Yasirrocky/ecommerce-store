@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - StyleHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://imvfdhluvgcwcbzyumvz.supabase.co" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="canonical" href="http://localhost:3000/user/product-details.html">
+    <meta name="description" content="View product details, pricing and availability at StyleHub.">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="Product Details - StyleHub">
+    <meta property="og:description" content="View product details, pricing and availability at StyleHub.">
+    <meta property="og:url" content="http://localhost:3000/user/product-details.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Product Details - StyleHub">
+    <meta name="twitter:description" content="View product details, pricing and availability at StyleHub.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="navigation"></div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <a href="index.html" class="text-gray-400 hover:text-gray-500">
+                            <i class="fas fa-home"></i>
+                            <span class="sr-only">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <a href="product.html" class="text-gray-400 hover:text-gray-500">Products</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <span id="breadcrumbCategory" class="text-gray-500">Category</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <span id="breadcrumbProduct" class="text-gray-900 font-medium">Product</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="container-responsive py-6 sm:py-8">
+        <div id="productDetails" class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Loading State -->
+            <div id="loadingState" class="flex justify-center items-center py-12 sm:py-20">
+                <div class="loading"></div>
+                <span class="ml-2 text-gray-600 text-sm sm:text-base">Loading product details...</span>
+            </div>
+            
+            <!-- Error State -->
+            <div id="errorState" class="hidden text-center py-12 sm:py-20 px-4">
+                <div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-orange-100 mb-4 sm:mb-6">
+                    <i class="fas fa-box-open text-orange-500 text-2xl sm:text-3xl"></i>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Product Not Available</h3>
+                <p id="errorMessage" class="text-gray-600 mb-6 text-sm sm:text-base max-w-md mx-auto">
+                    This product may have been removed or is temporarily unavailable.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a href="product.html" class="w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-sm sm:text-base">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Browse All Products
+                    </a>
+                    <a href="index.html" class="w-full sm:w-auto bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition font-semibold text-sm sm:text-base">
+                        <i class="fas fa-home mr-2"></i>
+                        Go to Home
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Product Content -->
+            <div id="productContent" class="hidden">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-6 xl:gap-8">
+                    <!-- Product Image -->
+                    <div class="aspect-w-3 aspect-h-4">
+                        <img id="productImage" src="" alt="" class="w-full h-full object-cover" loading="lazy" width="800" height="800">
+                    </div>
+                    
+                    <!-- Product Info -->
+                    <div class="p-4 sm:p-6 lg:p-8">
+                        <h1 id="productName" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900"></h1>
+                        <p id="productCategory" class="text-base sm:text-lg mt-2 text-gray-600"></p>
+                        <p id="productPrice" class="text-2xl sm:text-3xl font-bold text-blue-600 mt-4"></p>
+                        
+                        <div class="mt-4 sm:mt-6">
+                            <h3 class="text-sm font-medium text-gray-900">Description</h3>
+                            <div id="productDescription" class="mt-2 text-sm text-gray-700"></div>
+                        </div>
+                        
+                        <!-- Size Selection -->
+                        <div class="mt-4 sm:mt-6">
+                            <h3 class="text-sm font-medium text-gray-900">Size</h3>
+                            <div class="mt-2 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2">
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="XS">XS</button>
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="S">S</button>
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="M">M</button>
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="L">L</button>
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="XL">XL</button>
+                                <button class="size-btn border border-gray-300 rounded-md py-2 px-2 sm:px-3 text-xs sm:text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-size="XXL">XXL</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Quantity Selection -->
+                        <div class="mt-4 sm:mt-6">
+                            <h3 class="text-sm font-medium text-gray-900">Quantity</h3>
+                            <div class="mt-2 flex items-center space-x-2">
+                                <button id="decreaseQty" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-minus text-sm"></i>
+                                </button>
+                                <span id="quantity" class="text-base sm:text-lg font-semibold w-8 text-center">1</span>
+                                <button id="increaseQty" class="bg-gray-200 hover:bg-gray-300 text-gray-700 w-8 h-8 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart Button -->
+                        <div class="mt-6 sm:mt-8">
+                            <button id="addToCartBtn" class="w-full bg-blue-600 text-white py-3 px-4 sm:px-6 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                        
+                        <!-- Product Features -->
+                        <div class="mt-6 sm:mt-8 border-t border-gray-200 pt-6 sm:pt-8">
+                            <h3 class="text-sm font-medium text-gray-900">Features</h3>
+                            <ul class="mt-2 space-y-2 text-sm text-gray-700">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 text-xs"></i>
+                                    Premium quality materials
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 text-xs"></i>
+                                    Free shipping on orders over $50
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 text-xs"></i>
+                                    30-day return policy
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check text-green-500 mr-2 text-xs"></i>
+                                    Secure payment processing
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Related Products</h2>
+        <div id="relatedProducts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Related products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site-settings.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/product-details.js"></script>
+</body>
+</html>

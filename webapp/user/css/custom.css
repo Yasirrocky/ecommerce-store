@@ -1,0 +1,105 @@
+/* Animation keyframes */
+@keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(32px); }
+}
+
+.animate-scroll {
+    animation: scroll 1.5s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Modern hover effects */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+/* Product card effects */
+.product-card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Navigation fade effect */
+.nav-scroll {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-scroll.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Hero section video overlay */
+.video-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+/* Custom button styles */
+.btn-hover-expand {
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.btn-hover-expand::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-hover-expand:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+/* Loading animation */
+.loading-skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Smooth image loading */
+.image-fade-in {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-fade-in.loaded {
+    opacity: 1;
+}

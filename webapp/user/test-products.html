@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Products - Debug</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Product Debug Test</h1>
+        
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Connection Status</h2>
+            <div id="connectionStatus" class="text-gray-600">Checking...</div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Products from Database</h2>
+            <button onclick="loadTestProducts()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4">
+                Load Products
+            </button>
+            <div id="productsOutput" class="bg-gray-100 p-4 rounded overflow-auto max-h-96">
+                <pre id="productsData">Click "Load Products" to test...</pre>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Test Product Links</h2>
+            <div id="testLinks" class="space-y-2">
+                <!-- Links will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    
+    <script>
+        // Test Supabase connection
+        async function testConnection() {
+            const statusDiv = document.getElementById('connectionStatus');
+            try {
+                if (typeof supabase === 'undefined') {
+                    statusDiv.innerHTML = '<span class="text-red-600">❌ Supabase not loaded</span>';
+                    return;
+                }
+                
+                const { data, error } = await supabase
+                    .from('products')
+                    .select('count')
+                    .limit(1);
+                
+                if (error) {
+                    statusDiv.innerHTML = `<span class="text-red-600">❌ Error: ${error.message}</span>`;
+                } else {
+                    statusDiv.innerHTML = '<span class="text-green-600">✅ Connected to Supabase</span>';
+                }
+            } catch (err) {
+                statusDiv.innerHTML = `<span class="text-red-600">❌ Exception: ${err.message}</span>`;
+            }
+        }
+        
+        // Load and display products
+        async function loadTestProducts() {
+            const outputDiv = document.getElementById('productsData');
+            const linksDiv = document.getElementById('testLinks');
+            
+            outputDiv.textContent = 'Loading...';
+            linksDiv.innerHTML = '';
+            
+            try {
+                const { data: products, error } = await supabase
+                    .from('products')
+                    .select(`
+                        id,
+                        name,
+                        price,
+                        image_url,
+                        categories:category_id (
+                            id,
+                            name
+                        )
+                    `)
+                    .limit(10);
+                
+                if (error) {
+                    outputDiv.textContent = `Error: ${error.message}`;
+                    return;
+                }
+                
+                if (!products || products.length === 0) {
+                    outputDiv.textContent = 'No products found in database';
+                    return;
+                }
+                
+                // Display products as JSON
+                outputDiv.textContent = JSON.stringify(products, null, 2);
+                
+                // Generate test links
+                linksDiv.innerHTML = '<p class="text-sm text-gray-600 mb-2">Click these links to test product details page:</p>';
+                products.forEach(product => {
+                    const link = document.createElement('a');
+                    link.href = `product-details.html?id=${product.id}`;
+                    link.className = 'block p-3 bg-blue-50 hover:bg-blue-100 rounded border border-blue-200 mb-2';
+                    link.innerHTML = `
+                        <div class="font-semibold">${product.name}</div>
+                        <div class="text-sm text-gray-600">ID: ${product.id}</div>
+                        <div class="text-sm text-blue-600">Click to test →</div>
+                    `;
+                    linksDiv.appendChild(link);
+                });
+                
+            } catch (err) {
+                outputDiv.textContent = `Exception: ${err.message}\n${err.stack}`;
+            }
+        }
+        
+        // Test on page load
+        testConnection();
+    </script>
+</body>
+</html>

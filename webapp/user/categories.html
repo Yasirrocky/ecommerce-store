@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - StyleHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://imvfdhluvgcwcbzyumvz.supabase.co" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="canonical" href="http://localhost:3000/user/categories.html">
+    <meta name="description" content="Browse all product categories at StyleHub. Find fashion for men, women, kids, shoes and accessories.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Categories - StyleHub">
+    <meta property="og:description" content="Browse all product categories at StyleHub.">
+    <meta property="og:url" content="http://localhost:3000/user/categories.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=1200&q=80">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <div id="navigation"></div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 sm:py-20">
+        <div class="container-responsive">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">Shop by Category</h1>
+                <p class="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
+                    Explore our curated collections across all categories
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="py-16 sm:py-20">
+        <div class="container-responsive">
+            <div id="categoriesContainer" class="space-y-16">
+                <!-- Categories with products will be loaded here -->
+                <div class="flex justify-center items-center py-12">
+                    <div class="loading"></div>
+                    <span class="ml-2 text-gray-600">Loading categories...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/site-settings.js" defer></script>
+    <script src="js/components.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/categories.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/categories-page.js" defer></script>
+</body>
+</html>
